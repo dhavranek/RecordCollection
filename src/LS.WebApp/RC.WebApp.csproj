@@ -228,9 +228,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\BaseApiController.cs" />
-    <Compile Include="Controllers\Api\ValuesController1.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\Api\ArtistController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -308,6 +306,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LS.Core\RC.Core.csproj">
+      <Project>{630CD161-8B43-484A-BEFE-E9EE20E1CCF6}</Project>
+      <Name>RC.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LS.Domain\RC.Domain.csproj">
+      <Project>{2896537D-5B6C-4C62-829A-A7979B0AA11A}</Project>
+      <Name>RC.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LS.Services\RC.Services.csproj">
+      <Project>{bd426e12-8118-4260-bebf-9fdc429ff616}</Project>
+      <Name>RC.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

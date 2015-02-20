@@ -202,6 +202,17 @@ namespace RC.Repositories
             return result;
         }
 
+        public virtual DataAccessResult Delete(TPK id, IUnitOfWork<TEntity, TDbContext> unitOfWork)
+        {
+            var result = new DataAccessResult();
+            var entityToDelete = GetEntity(id, unitOfWork);
+            unitOfWork.MainEntity.Attach(entityToDelete);
+            unitOfWork.MainEntity.Remove(entityToDelete);
+
+            result.IsSuccessful = true;
+            return result;
+        }
+
         public virtual DataAccessResult<TEntity> Update(TEntity entityToUpdate,
             IUnitOfWork<TEntity, TDbContext> unitOfWork)
         {
