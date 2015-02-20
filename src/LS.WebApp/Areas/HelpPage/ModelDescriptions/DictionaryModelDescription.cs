@@ -1,4 +1,4 @@
-namespace LS.WebApp.Areas.HelpPage.ModelDescriptions
+namespace RC.WebApp.Areas.HelpPage.ModelDescriptions
 {
     public class DictionaryModelDescription : KeyValuePairModelDescription
     {

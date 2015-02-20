@@ -1,4 +1,4 @@
-namespace LS.WebApp.Areas.HelpPage
+namespace RC.WebApp.Areas.HelpPage
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response

@@ -1,6 +1,6 @@
 using System;
 
-namespace LS.WebApp.Areas.HelpPage.ModelDescriptions
+namespace RC.WebApp.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LS.WebApp.Models
+namespace RC.WebApp.Models
 {
     // Models returned by AccountController actions.
 
