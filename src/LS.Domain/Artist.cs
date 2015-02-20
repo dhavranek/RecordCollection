@@ -4,7 +4,7 @@ using RC.Core.Interfaces;
 
 namespace RC.Domain
 {
-    public class Artist : IEntity<string>, IEntity, IEntity
+    public class Artist : IEntity<string>
     {
         public Artist()
         {

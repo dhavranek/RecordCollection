@@ -11,7 +11,7 @@ namespace RC.Repositories.UnitOfWork
 {
     public class ArtistUnitOfWork : UnitOfWorkUsingDbContext<Artist, ApplicationDbContext>
     {
-        public ArtistUnitOfWork(ApplicationDbContext typedContext) : base(typedContext)
+        public ArtistUnitOfWork() : base(new ApplicationDbContext())
         {
         }
 
