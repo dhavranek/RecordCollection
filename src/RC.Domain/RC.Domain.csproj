@@ -59,7 +59,7 @@
     <Compile Include="Song.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LS.Core\RC.Core.csproj">
+    <ProjectReference Include="..\RC.Core\RC.Core.csproj">
       <Project>{630CD161-8B43-484A-BEFE-E9EE20E1CCF6}</Project>
       <Name>RC.Core</Name>
     </ProjectReference>

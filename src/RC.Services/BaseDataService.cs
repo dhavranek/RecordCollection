@@ -26,6 +26,12 @@ namespace RC.Services
             UnitOfWork = unitOfWork;
         }
 
+        protected BaseDataService()
+        {
+            BaseRepository = GetDefaultRepository();
+            UnitOfWork = GetDefaultUnitOfWork();
+        }
+
         public abstract BaseRepository<TEntity, TPK, TDbContext> GetDefaultRepository();
 
         public abstract UnitOfWorkUsingDbContext<TEntity, TDbContext> GetDefaultUnitOfWork();
@@ -81,6 +87,26 @@ namespace RC.Services
                 return result;
             }
         }
+
+        public ServiceProcessingResult<TEntity> Add(TEntity entityToAdd)
+        {
+            using (var unitOfWork = GetUnitOfWork())
+            {
+                var result = new ServiceProcessingResult<TEntity>();
+                try
+                {
+                    var addResult = GetRepository().Add(entityToAdd, unitOfWork);
+                    result.IsSuccessful = true;
+                    result.Data = addResult.Data;
+                }
+                catch (Exception)
+                {
+                    // TODO: Log Failure
+                    result.IsSuccessful = false;
+                }
+                return result;
+            }
+        } 
 
         public ServiceProcessingResult<TEntity> Upsert(TEntity entity)
         {

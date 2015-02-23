@@ -7,14 +7,19 @@ namespace RC.WebApp.Controllers.Api
     public class ArtistController : BaseApiController
     {
         [HttpPost]
-        [Route("api/artist/add")]
+        [Route("api/artist/add/{name}")]
         public IHttpActionResult Add(string name)
         {
             var service = new ArtistDataService();
-            var artist = new Artist();
-            artist.Name = name;
+            var artist = new Artist {Name = name};
 
-            service.Add(artist);
+            var addResult = service.Add(artist);
+            if (!addResult.IsSuccessful)
+            {
+                return Ok(addResult.Error);
+            }
+
+            return Ok(artist);
         }
     }
 }

@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A853B234-EBDF-49BE-B546-FD2A3D7B0CBB}</ProjectGuid>
+    <ProjectGuid>{7BD25DE6-A3CD-4EB6-9663-2FE6D7252019}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -21,7 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <NuGetPackageImportStamp>0f2effbb</NuGetPackageImportStamp>
-    <ApplicationInsightsResourceId>/subscriptions/76432261-c41c-4614-b92c-7e1d29ab8ab6/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/LS.WebApp</ApplicationInsightsResourceId>
+    <ApplicationInsightsResourceId>/subscriptions/76432261-c41c-4614-b92c-7e1d29ab8ab6/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/RC.WebApp</ApplicationInsightsResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -308,15 +308,19 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LS.Core\RC.Core.csproj">
+    <ProjectReference Include="..\RC.Core\RC.Core.csproj">
       <Project>{630CD161-8B43-484A-BEFE-E9EE20E1CCF6}</Project>
       <Name>RC.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LS.Domain\RC.Domain.csproj">
+    <ProjectReference Include="..\RC.Domain\RC.Domain.csproj">
       <Project>{2896537D-5B6C-4C62-829A-A7979B0AA11A}</Project>
       <Name>RC.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LS.Services\RC.Services.csproj">
+    <ProjectReference Include="..\RC.Repositories\RC.Repositories.csproj">
+      <Project>{86a894e2-896a-4b5b-8a3e-c724e809ed4b}</Project>
+      <Name>RC.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RC.Services\RC.Services.csproj">
       <Project>{bd426e12-8118-4260-bebf-9fdc429ff616}</Project>
       <Name>RC.Services</Name>
     </ProjectReference>

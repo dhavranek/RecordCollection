@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BD426E12-8118-4260-BEBF-9FDC429FF616}</ProjectGuid>
+    <ProjectGuid>{86A894E2-896A-4B5B-8A3E-C724E809ED4B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RC.Services</RootNamespace>
-    <AssemblyName>RC.Services</AssemblyName>
+    <RootNamespace>RC.Repositories</RootNamespace>
+    <AssemblyName>RC.Repositories</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,28 +31,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="LinqKit">
       <HintPath>..\packages\LINQKit.1.1.1\lib\net45\LinqKit.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Linq.Dynamic">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.4\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,27 +60,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtistDataService.cs" />
-    <Compile Include="BaseDataService.cs" />
+    <Compile Include="ArtistRepository.cs" />
+    <Compile Include="BaseRepository.cs" />
+    <Compile Include="DBContexts\ApplicationDbContext.cs" />
+    <Compile Include="EFConfigs\AlbumEFConfig.cs" />
+    <Compile Include="EFConfigs\ArtistEFConfig.cs" />
+    <Compile Include="EFConfigs\SongEFConfig.cs" />
+    <Compile Include="EntityExtensions.cs" />
+    <Compile Include="Migrations\201502190718119_Initial-Create.cs" />
+    <Compile Include="Migrations\201502190718119_Initial-Create.Designer.cs">
+      <DependentUpon>201502190718119_Initial-Create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502200337446_New-Stuff.cs" />
+    <Compile Include="Migrations\201502200337446_New-Stuff.Designer.cs">
+      <DependentUpon>201502200337446_New-Stuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitOfWork\ArtistUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\UnitOfWorkUsingDbContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RC.Core\RC.Core.csproj">
+      <Project>{630CD161-8B43-484A-BEFE-E9EE20E1CCF6}</Project>
+      <Name>RC.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RC.Domain\RC.Domain.csproj">
+      <Project>{2896537d-5b6c-4c62-829a-a7979b0aa11a}</Project>
+      <Name>RC.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LS.Core\RC.Core.csproj">
-      <Project>{630cd161-8b43-484a-befe-e9ee20e1ccf6}</Project>
-      <Name>RC.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LS.Domain\RC.Domain.csproj">
-      <Project>{2896537D-5B6C-4C62-829A-A7979B0AA11A}</Project>
-      <Name>RC.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LS.Repositories\RC.Repositories.csproj">
-      <Project>{86a894e2-896a-4b5b-8a3e-c724e809ed4b}</Project>
-      <Name>RC.Repositories</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Migrations\201502190718119_Initial-Create.resx">
+      <DependentUpon>201502190718119_Initial-Create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502200337446_New-Stuff.resx">
+      <DependentUpon>201502200337446_New-Stuff.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

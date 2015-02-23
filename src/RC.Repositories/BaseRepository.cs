@@ -191,6 +191,7 @@ namespace RC.Repositories
             try
             {
                 unitOfWork.MainEntity.Add(entityToAdd);
+                unitOfWork.Save();
                 result.IsSuccessful = true;
                 result.Data = entityToAdd;
             }
