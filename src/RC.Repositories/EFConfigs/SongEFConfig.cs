@@ -12,9 +12,15 @@ namespace RC.Repositories.EFConfigs
     {
         public SongEFConfig()
         {
-            HasRequired(s => s.Album);
+            HasRequired(s => s.Album)
+                .WithMany(a => a.Songs)
+                .HasForeignKey(s => s.AlbumId)
+                .WillCascadeOnDelete(false);
 
-            HasRequired(s => s.Artist);
+            HasRequired(s => s.Artist)
+                .WithMany(a => a.Songs)
+                .HasForeignKey(s => s.ArtistId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

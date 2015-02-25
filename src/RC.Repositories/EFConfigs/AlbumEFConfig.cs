@@ -7,7 +7,10 @@ namespace RC.Repositories.EFConfigs
     {
         public AlbumEFConfig()
         {
-            HasRequired(a => a.Artist);
+            HasRequired(a => a.Artist)
+                .WithMany(a => a.Albums)
+                .HasForeignKey(a => a.ArtistId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

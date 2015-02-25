@@ -67,13 +67,9 @@
     <Compile Include="EFConfigs\ArtistEFConfig.cs" />
     <Compile Include="EFConfigs\SongEFConfig.cs" />
     <Compile Include="EntityExtensions.cs" />
-    <Compile Include="Migrations\201502190718119_Initial-Create.cs" />
-    <Compile Include="Migrations\201502190718119_Initial-Create.Designer.cs">
-      <DependentUpon>201502190718119_Initial-Create.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502200337446_New-Stuff.cs" />
-    <Compile Include="Migrations\201502200337446_New-Stuff.Designer.cs">
-      <DependentUpon>201502200337446_New-Stuff.cs</DependentUpon>
+    <Compile Include="Migrations\201502251659087_Initial-Create.cs" />
+    <Compile Include="Migrations\201502251659087_Initial-Create.Designer.cs">
+      <DependentUpon>201502251659087_Initial-Create.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,11 +93,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201502190718119_Initial-Create.resx">
-      <DependentUpon>201502190718119_Initial-Create.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502200337446_New-Stuff.resx">
-      <DependentUpon>201502200337446_New-Stuff.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201502251659087_Initial-Create.resx">
+      <DependentUpon>201502251659087_Initial-Create.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -9,9 +9,6 @@ namespace RC.Repositories.EFConfigs
         {
             HasMany(a => a.Albums)
                 .WithRequired();
-
-            HasMany(a => a.Songs)
-                .WithRequired();
         }
     }
 }

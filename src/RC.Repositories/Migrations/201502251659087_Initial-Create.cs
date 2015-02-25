@@ -8,6 +8,48 @@ namespace RC.Repositories.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.Albums",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Title = c.String(),
+                        ArtistId = c.String(nullable: false, maxLength: 128),
+                        ReleaseYear = c.DateTime(nullable: false),
+                        PreferredFormat = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Artists", t => t.ArtistId)
+                .Index(t => t.ArtistId);
+            
+            CreateTable(
+                "dbo.Artists",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(),
+                        Song_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Songs", t => t.Song_Id)
+                .Index(t => t.Song_Id);
+            
+            CreateTable(
+                "dbo.Songs",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Title = c.String(),
+                        ArtistId = c.String(nullable: false, maxLength: 128),
+                        AlbumId = c.String(nullable: false, maxLength: 128),
+                        Duration = c.Time(nullable: false, precision: 7),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Albums", t => t.AlbumId)
+                .ForeignKey("dbo.Artists", t => t.ArtistId)
+                .Index(t => t.ArtistId)
+                .Index(t => t.AlbumId);
+            
+            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -86,17 +128,28 @@ namespace RC.Repositories.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Albums", "ArtistId", "dbo.Artists");
+            DropForeignKey("dbo.Artists", "Song_Id", "dbo.Songs");
+            DropForeignKey("dbo.Songs", "ArtistId", "dbo.Artists");
+            DropForeignKey("dbo.Songs", "AlbumId", "dbo.Albums");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Songs", new[] { "AlbumId" });
+            DropIndex("dbo.Songs", new[] { "ArtistId" });
+            DropIndex("dbo.Artists", new[] { "Song_Id" });
+            DropIndex("dbo.Albums", new[] { "ArtistId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Songs");
+            DropTable("dbo.Artists");
+            DropTable("dbo.Albums");
         }
     }
 }

@@ -29,7 +29,8 @@ namespace RC.Repositories.DBContexts
         {
             // TODO: Add EFConfig files to this method as they are created
             modelBuilder.Configurations.Add(new AlbumEFConfig());
-
+            modelBuilder.Configurations.Add(new ArtistEFConfig());
+            modelBuilder.Configurations.Add(new SongEFConfig());
 
             base.OnModelCreating(modelBuilder);
         }

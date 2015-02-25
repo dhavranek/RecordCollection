@@ -15,10 +15,10 @@ namespace RC.Domain
 
         public string Id { get; set; }
         public string Title { get; set; }
-        public string AlbumId { get; set; }
-        public Album Album { get; set; }
         public string ArtistId { get; set; }
         public Artist Artist { get; set; }
+        public string AlbumId { get; set; }
+        public Album Album { get; set; }
         public TimeSpan Duration { get; set; }
 
         public ICollection<Artist> FeaturedArtists
